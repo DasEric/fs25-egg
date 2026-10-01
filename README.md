@@ -1,50 +1,50 @@
 # Farming Simulator 25 – Pelican/Pterodactyl Egg
 
-Ein Egg für einen FS25 Dedicated Server mit dem Docker-Image
+An egg for an FS25 dedicated server using the Docker image
 [`toetje585/arch-fs25server:latest`](https://github.com/wine-gameservers/arch-fs25server).
 
-## Funktionen
+## Features
 
-- FS25-Installation und Lizenzaktivierung über noVNC
-- Wine 11 und Headless-Audio-Konfiguration
-- automatische DLC-Reihenfolge mit manueller Eingabe der Produktschlüssel
-- freie Game-, Web- und noVNC-Ports
-- persistente Mods, Savegames, DLCs und Lizenzdaten
-- Kartenwahl über das GIANTS-Webinterface
+- FS25 installation and license activation through noVNC
+- Wine 11 and headless audio configuration
+- automatic sequential DLC installation with manual product-key entry
+- freely configurable game, web, and noVNC ports
+- persistent mods, savegames, DLCs, and license data
+- map selection through the GIANTS web interface
 
 ## Installation
 
-1. [`egg-farming-simulator-25.json`](./egg-farming-simulator-25.json) im
-   Pelican-/Pterodactyl-Adminbereich importieren.
-2. Ports zuweisen:
-   - primär: `10823` TCP/UDP – Spielport
-   - zusätzlich: `7999` TCP – GIANTS-Webinterface
-   - zusätzlich: `6080` TCP – noVNC
-3. FS25-IMG/ZIP/EXE nach `/home/container/installer` hochladen.
-4. Server starten und noVNC öffnen:
+1. Import [`egg-farming-simulator-25.json`](./egg-farming-simulator-25.json) in
+   the Pelican or Pterodactyl admin panel.
+2. Assign the ports:
+   - primary: `10823` TCP/UDP – game port
+   - additional: `7999` TCP – GIANTS web interface
+   - additional: `6080` TCP – noVNC
+3. Upload the FS25 IMG, ZIP, or EXE file to `/home/container/installer`.
+4. Start the server and open noVNC:
 
    ```text
    http://SERVER-IP:6080/vnc.html?resize=remote&autoconnect=1
    ```
 
-5. **FS25 installieren / aktivieren** öffnen und den Server-Key eingeben.
+5. Open **Install / activate FS25** and enter the server key.
 
-Eine separate GIANTS-Serverlizenz ist erforderlich. Die Steam-Version stellt
-keinen passenden Server-Key bereit.
+A separate GIANTS server license is required. The Steam version does not
+include a compatible server key.
 
 ## DLCs
 
-DLC-Installer als `FarmingSimulator25_*.exe`, `.img`, `.iso` oder `.zip` nach
-`/home/container/dlc` hochladen und im Panel setzen:
+Upload DLC installers named `FarmingSimulator25_*.exe`, `.img`, `.iso`, or
+`.zip` to `/home/container/dlc`, then set the following in the panel:
 
 ```text
 AUTO_INSTALL_DLC=true
 ```
 
-Die Installer öffnen sich nacheinander in noVNC. Bereits installierte DLCs
-werden übersprungen; die Produktschlüssel werden weiterhin manuell eingegeben.
+The installers open one after another in noVNC. DLCs that are already installed
+are skipped; product keys must still be entered manually.
 
-## Mods und Savegames
+## Mods and Savegames
 
 ```text
 Mods:      /home/container/config/FarmingSimulator2025/mods
@@ -53,15 +53,15 @@ DLCs:      /home/container/config/FarmingSimulator2025/pdlc
 Logs:      /home/container/logs
 ```
 
-Mods als ZIP hochladen und nicht entpacken.
+Upload mods as ZIP files and do not extract them.
 
-## Kartenwahl
+## Map Selection
 
-`SERVER_MAP` leer lassen, wenn die Karte im GIANTS-Webinterface ausgewählt
-werden soll. Die dort gespeicherte `mapID` und `mapFilename` bleiben über
-Containerneustarts erhalten. Ein Wert in `SERVER_MAP` erzwingt diese Karte.
+Leave `SERVER_MAP` empty if the map should be selected in the GIANTS web
+interface. The saved `mapID` and `mapFilename` remain in place across container
+restarts. Setting `SERVER_MAP` forces the server to use that map.
 
-## Hinweis
+## Disclaimer
 
-Dieses Projekt ist nicht mit GIANTS Software verbunden. Spiel und DLCs müssen
-regulär über GIANTS bezogen und für den Server aktiviert werden.
+This project is not affiliated with GIANTS Software. The game and DLCs must be
+obtained legitimately from GIANTS and activated for the server.
