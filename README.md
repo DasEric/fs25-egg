@@ -3,8 +3,7 @@
 An egg for an FS25 dedicated server using the Docker image
 [`toetje585/arch-fs25server:latest`](https://github.com/wine-gameservers/arch-fs25server).
 
-# THIS EGG IS "OUTDATED" INSTEAD USE THE EGG FROM THE OFFICIAL PELICAN REPO I CREATED
-https://github.com/pelican-eggs/games-standalone
+# THIS EGG IS "OUTDATED" INSTEAD USE THE EGG FROM [THE OFFICIAL PELICAN REPO](https://github.com/pelican-eggs/games-standalone)
 
 ## Features
 
